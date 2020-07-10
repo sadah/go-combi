@@ -26,6 +26,9 @@ func P(n, k int) int {
 // C returns C(n,k)
 // C(n,k) = n!/((n-k)!k!)
 func C(n, k int) int {
+	if k > n-k {
+		k = n - k
+	}
 	return P(n, k) / P(k, k)
 }
 

@@ -94,15 +94,61 @@ func TestPowerSetIndex(t *testing.T) {
 		args args
 		want [][]int
 	}{
-		{"Power Set 0", args{0}, [][]int{{}}},
-		{"Power Set 1", args{1}, [][]int{{}, {0}}},
-		{"Power Set 2", args{2}, [][]int{{}, {0}, {1}, {0, 1}}},
-		{"Power Set 3", args{3}, [][]int{{}, {0}, {1}, {0, 1}, {2}, {0, 2}, {1, 2}, {0, 1, 2}}},
+		{"Power Set Index 0", args{0}, [][]int{{}}},
+		{"Power Set Index 1", args{1}, [][]int{{}, {0}}},
+		{"Power Set Index 2", args{2}, [][]int{{}, {0}, {1}, {0, 1}}},
+		{"Power Set Index 3", args{3}, [][]int{{}, {0}, {1}, {0, 1}, {2}, {0, 2}, {1, 2}, {0, 1, 2}}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := PowerSetIndex(tt.args.n); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("PowerSetIndex() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestPowerSetInts(t *testing.T) {
+	type args struct {
+		ints []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]int
+	}{
+		{"Power Set Ints 0", args{[]int{}}, [][]int{{}}},
+		{"Power Set Ints 1", args{[]int{1}}, [][]int{{}, {1}}},
+		{"Power Set Ints 2", args{[]int{1, 2}}, [][]int{{}, {1}, {2}, {1, 2}}},
+		{"Power Set Ints 3", args{[]int{1, 2, 3}}, [][]int{{}, {1}, {2}, {1, 2}, {3}, {1, 3}, {2, 3}, {1, 2, 3}}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := PowerSetInts(tt.args.ints); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("PowerSetInts() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestPowerSetStrs(t *testing.T) {
+	type args struct {
+		strs []string
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]string
+	}{
+		{"Power Set Strs 0", args{[]string{}}, [][]string{{}}},
+		{"Power Set Strs 1", args{[]string{"a"}}, [][]string{{}, {"a"}}},
+		{"Power Set Strs 2", args{[]string{"a", "b"}}, [][]string{{}, {"a"}, {"b"}, {"a", "b"}}},
+		{"Power Set Strs 3", args{[]string{"a", "b", "c"}}, [][]string{{}, {"a"}, {"b"}, {"a", "b"}, {"c"}, {"a", "c"}, {"b", "c"}, {"a", "b", "c"}}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := PowerSetStrs(tt.args.strs); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("PowerSetStrs() = %v, want %v", got, tt.want)
 			}
 		})
 	}

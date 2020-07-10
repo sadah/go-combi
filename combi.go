@@ -32,8 +32,8 @@ func C(n, k int) int {
 	return P(n, k) / P(k, k)
 }
 
-// Factorical returns n!
-func Factorical(n int) int {
+// Factorial returns n!
+func Factorial(n int) int {
 	return P(n, n)
 }
 

@@ -60,7 +60,7 @@ func TestC(t *testing.T) {
 	}
 }
 
-func TestFactorical(t *testing.T) {
+func TestFactorial(t *testing.T) {
 	type args struct {
 		n int
 	}
@@ -78,8 +78,8 @@ func TestFactorical(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Factorical(tt.args.n); got != tt.want {
-				t.Errorf("Factorical() = %v, want %v", got, tt.want)
+			if got := Factorial(tt.args.n); got != tt.want {
+				t.Errorf("Factorial() = %v, want %v", got, tt.want)
 			}
 		})
 	}

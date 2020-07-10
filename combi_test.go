@@ -1,7 +1,10 @@
 // Package combi implements some combinatoric functions
 package combi
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestP(t *testing.T) {
 	type args struct {
@@ -77,6 +80,29 @@ func TestFactorical(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := Factorical(tt.args.n); got != tt.want {
 				t.Errorf("Factorical() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestPowerSetIndex(t *testing.T) {
+	type args struct {
+		n int
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]int
+	}{
+		{"Power Set 0", args{0}, [][]int{{}}},
+		{"Power Set 1", args{1}, [][]int{{}, {0}}},
+		{"Power Set 2", args{2}, [][]int{{}, {0}, {1}, {0, 1}}},
+		{"Power Set 3", args{3}, [][]int{{}, {0}, {1}, {0, 1}, {2}, {0, 2}, {1, 2}, {0, 1, 2}}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := PowerSetIndex(tt.args.n); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("PowerSetIndex() = %v, want %v", got, tt.want)
 			}
 		})
 	}

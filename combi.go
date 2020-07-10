@@ -33,3 +33,27 @@ func C(n, k int) int {
 func Factorical(n int) int {
 	return P(n, n)
 }
+
+// PowerSetIndex returns indexes of power set
+func PowerSetIndex(n int) [][]int {
+	if n < 0 {
+		panic(errNegativeInput)
+	}
+	if n == 0 {
+		return [][]int{[]int{}}
+	}
+
+	size := 1 << n
+	ret := make([][]int, size)
+
+	for bit := 0; bit < 1<<n; bit++ {
+		subset := []int{}
+		for i := 0; i < n; i++ {
+			if (bit & (1 << i)) != 0 {
+				subset = append(subset, i)
+			}
+		}
+		ret[bit] = subset
+	}
+	return ret
+}

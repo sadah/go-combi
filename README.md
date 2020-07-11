@@ -1,14 +1,31 @@
-# [WIP] go-combi
+# go-combi
 
 [![Go](https://github.com/sadah/go-combi/workflows/Go/badge.svg)](https://github.com/sadah/go-combi/actions)
 [![codecov](https://codecov.io/gh/sadah/go-combi/branch/master/graph/badge.svg)](https://codecov.io/gh/sadah/go-combi)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sadah/go-combi)](https://goreportcard.com/report/github.com/sadah/go-combi)
 
-Package combi implements some combinatoric functions
+combi implements some combinatoric functions
 
 # SYNOPSIS
 
-TBD
+You can see a sample code in cmd directory.
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/sadah/go-combi"
+)
+
+func main() {
+    ints := []int{1, 2, 3}
+    psi := combi.PowerSetInts(ints)
+    fmt.Println(psi)
+    // => [[] [1] [2] [1 2] [3] [1 3] [2 3] [1 2 3]]
+}
+```
 
 # DESCRIPTION
 
@@ -43,6 +60,38 @@ pss := combi.PowerSetStrs(strs)
 fmt.Println(pss)
 // => [[] [a] [b] [a b] [c] [a c] [b c] [a b c]]
 ```
+
+## Combination
+
+### Combination Index
+
+```go
+cin := combi.CombinationIndex(3, 2)
+fmt.Println(cin)
+// => [[0 1] [0 2] [1 2]]
+```
+
+### Combination Ints
+
+```go
+ints := []int{1, 2, 3}
+ci := combi.CombinationInts(ints, 2)
+fmt.Println(ci)
+// => [[1 2] [1 3] [2 3]]
+```
+
+### Combination Strs
+
+```go
+strs := []string{"a", "b", "c"}
+cs := combi.CombinationStrs(strs, 2)
+fmt.Println(cs)
+// => [[a b] [a c] [b c]]
+```
+
+## Permutation
+
+TBD
 
 ## Arithmetic Functions
 

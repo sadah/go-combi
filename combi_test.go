@@ -153,3 +153,69 @@ func TestPowerSetStrs(t *testing.T) {
 		})
 	}
 }
+
+func TestCombinationIndex(t *testing.T) {
+	type args struct {
+		n int
+		k int
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]int
+	}{
+		{"Combi Index 0", args{0, 0}, [][]int{{}}},
+		{"Combi Index 1", args{3, 2}, [][]int{{0, 1}, {0, 2}, {1, 2}}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := CombinationIndex(tt.args.n, tt.args.k); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("CombinationInts() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCombinationInts(t *testing.T) {
+	type args struct {
+		ints []int
+		k    int
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]int
+	}{
+		{"Combi Ints 0", args{[]int{}, 0}, [][]int{{}}},
+		{"Combi Ints 1", args{[]int{1, 2, 3}, 2}, [][]int{{1, 2}, {1, 3}, {2, 3}}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := CombinationInts(tt.args.ints, tt.args.k); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("CombinationInts() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCombinationStrs(t *testing.T) {
+	type args struct {
+		strs []string
+		k    int
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]string
+	}{
+		{"Combi Strs 0", args{[]string{}, 0}, [][]string{{}}},
+		{"Combi Strs 1", args{[]string{"a", "b", "c"}, 2}, [][]string{{"a", "b"}, {"a", "c"}, {"b", "c"}}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := CombinationStrs(tt.args.strs, tt.args.k); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("CombinationStrs() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

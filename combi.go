@@ -1,6 +1,10 @@
 // Package combi implements some combinatoric functions
 package combi
 
+import (
+	"math/bits"
+)
+
 const (
 	errNegativeInput = "combi: Don't use negative"
 	errBadSize       = "combi: n < k"
@@ -101,6 +105,82 @@ func PowerSetStrs(strs []string) [][]string {
 			}
 		}
 		ret[bit] = subset
+	}
+	return ret
+}
+
+// CombinationIndex returns indexes of combinations
+func CombinationIndex(n, k int) [][]int {
+	if n == 0 || k == 0 {
+		return [][]int{{}}
+	}
+
+	size := 1 << n
+	var ret [][]int
+
+	for bit := 0; bit < size; bit++ {
+		popcnt := bits.OnesCount64(uint64(bit))
+		if popcnt == k {
+			subset := []int{}
+			for i := 0; i < n; i++ {
+				if (bit & (1 << i)) != 0 {
+					subset = append(subset, i)
+				}
+			}
+			ret = append(ret, subset)
+		}
+	}
+	return ret
+}
+
+// CombinationInts returns combination sets
+func CombinationInts(ints []int, k int) [][]int {
+	n := len(ints)
+
+	if n == 0 || k == 0 {
+		return [][]int{{}}
+	}
+
+	size := 1 << n
+	var ret [][]int
+
+	for bit := 0; bit < size; bit++ {
+		popcnt := bits.OnesCount64(uint64(bit))
+		if popcnt == k {
+			subset := []int{}
+			for i := 0; i < n; i++ {
+				if (bit & (1 << i)) != 0 {
+					subset = append(subset, ints[i])
+				}
+			}
+			ret = append(ret, subset)
+		}
+	}
+	return ret
+}
+
+// CombinationStrs returns combination sets
+func CombinationStrs(strs []string, k int) [][]string {
+	n := len(strs)
+
+	if n == 0 || k == 0 {
+		return [][]string{{}}
+	}
+
+	size := 1 << n
+	var ret [][]string
+
+	for bit := 0; bit < size; bit++ {
+		popcnt := bits.OnesCount64(uint64(bit))
+		if popcnt == k {
+			subset := []string{}
+			for i := 0; i < n; i++ {
+				if (bit & (1 << i)) != 0 {
+					subset = append(subset, strs[i])
+				}
+			}
+			ret = append(ret, subset)
+		}
 	}
 	return ret
 }

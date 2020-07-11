@@ -1,5 +1,7 @@
 # [WIP] go-combi
 
+[![Actions Status](https://github.com/sadah/go-combi/workflows/Go/badge.svg)](https://github.com/sadah/go-combi/actions)
+
 Package combi implements some combinatoric functions
 
 # SYNOPSIS

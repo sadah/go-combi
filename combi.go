@@ -43,7 +43,7 @@ func PowerSetIndex(n int) [][]int {
 		panic(errNegativeInput)
 	}
 	if n == 0 {
-		return [][]int{[]int{}}
+		return [][]int{{}}
 	}
 
 	size := 1 << n
@@ -65,7 +65,7 @@ func PowerSetIndex(n int) [][]int {
 func PowerSetInts(ints []int) [][]int {
 	n := len(ints)
 	if n == 0 {
-		return [][]int{[]int{}}
+		return [][]int{{}}
 	}
 
 	size := 1 << n
@@ -87,7 +87,7 @@ func PowerSetInts(ints []int) [][]int {
 func PowerSetStrs(strs []string) [][]string {
 	n := len(strs)
 	if n == 0 {
-		return [][]string{[]string{}}
+		return [][]string{{}}
 	}
 
 	size := 1 << n

@@ -2,7 +2,7 @@
 
 [![Go](https://github.com/sadah/go-combi/workflows/Go/badge.svg)](https://github.com/sadah/go-combi/actions)
 [![codecov](https://codecov.io/gh/sadah/go-combi/branch/master/graph/badge.svg)](https://codecov.io/gh/sadah/go-combi)
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/sadah/go-combi)](https://goreportcard.com/report/github.com/sadah/go-combi)
 
 Package combi implements some combinatoric functions
 
